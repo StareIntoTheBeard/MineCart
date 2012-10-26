@@ -1,0 +1,2 @@
+module ProductCoresHelper
+end

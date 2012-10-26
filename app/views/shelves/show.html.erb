@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @shelf.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @shelf.description %>
+</p>
+
+<p>
+  <b>Currency:</b>
+  <%= @shelf.currency %>
+</p>
+
+<p>
+  <b>Language:</b>
+  <%= @shelf.language %>
+</p>
+
+
+<%= link_to 'Edit', edit_shelf_path(@shelf) %> |
+<%= link_to 'Back', shelves_path %>

@@ -1,0 +1,17 @@
+
+<%= @homes.title%><br>
+<%= make_me_a_pretty_sald(@homes.body) %>
+<%= link_to 'Edit Homepage', edit_home_path(@homes) %>
+<% if user_signed_in? %>
+<% content_for :the_store do %>
+  <%= link_to @store.name, @store %>
+  <% end%>
+  <% else %>
+  <%= link_to 'Sign Up!', new_user_registration_path %>
+<% end%>
+
+<br />
+
+<%= link_to 'New Home', new_home_path %>
+
+
