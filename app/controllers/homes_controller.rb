@@ -3,8 +3,10 @@ class HomesController < ApplicationController
   # GET /homes.json
   def index
     @homes = Home.find_by_title('Home')
-    if user_signed_in?
+    if user_signed_in? and current_user.store_id
       @store = Store.find_by_id(current_user.store_id) 
+    else
+      @store = Store.new(params[:store]) 
     end
     respond_to do |format|
       format.html # index.html.erb

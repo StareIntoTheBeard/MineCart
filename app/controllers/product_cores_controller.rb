@@ -1,8 +1,9 @@
 class ProductCoresController < ApplicationController
+  before_filter :store_identify
   # GET /product_cores
   # GET /product_cores.json
   def index
-    @product_cores = ProductCore.all
+    @product_cores = ProductCore.find_all_by_store_id(@storeid)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +25,7 @@ class ProductCoresController < ApplicationController
   # GET /product_cores/new
   # GET /product_cores/new.json
   def new
-    @product_core = ProductCore.new
+    @product_core = ProductCore.new(:store_id => params[:store_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,10 +42,12 @@ class ProductCoresController < ApplicationController
   # POST /product_cores.json
   def create
     @product_core = ProductCore.new(params[:product_core])
+    @product_core.store_id = current_user.store_id
+    @product_core.save
 
     respond_to do |format|
       if @product_core.save
-        format.html { redirect_to @product_core, notice: 'Product core was successfully created.' }
+        format.html { redirect_to store_product_cores_path, notice: 'Product core was successfully created.' }
         format.json { render json: @product_core, status: :created, location: @product_core }
       else
         format.html { render action: "new" }
@@ -60,7 +63,7 @@ class ProductCoresController < ApplicationController
 
     respond_to do |format|
       if @product_core.update_attributes(params[:product_core])
-        format.html { redirect_to @product_core, notice: 'Product core was successfully updated.' }
+        format.html { redirect_to store_product_cores_path, notice: 'Product core was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,4 +83,9 @@ class ProductCoresController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+    private
+    def store_identify
+      @storeid = current_user.store_id
+    end
 end

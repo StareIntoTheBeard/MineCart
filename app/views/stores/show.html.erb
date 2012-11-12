@@ -9,9 +9,23 @@
   <b>Description:</b>
   <%= @store.description %>
 </p>
+Products<br>
+<% @productlist.each do |s| %>
+	<%= link_to s.name, [@store, s] %><br>
+	<% end %>
 
-Create some products 
-<%= render 'product_cores/form' %>
+<br>
+
+Shelves<br>
+<% @shelflist.each do |s| %>
+	<%= link_to s.name, [@store, s] %><br>
+	<% end %>
+
+<br>
+
+<%= link_to "Create some products", '/stores/' + @store.id.to_s + '/product_cores/new' %>
+
+<%= link_to "New Shelf", '/stores/' + @store.id.to_s + '/shelves/new' %>
 
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>

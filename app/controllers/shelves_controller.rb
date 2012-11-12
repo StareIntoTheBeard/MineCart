@@ -1,4 +1,5 @@
 class ShelvesController < ApplicationController
+  before_filter :store_identify
   # GET /shelves
   # GET /shelves.json
   def index
@@ -24,7 +25,7 @@ class ShelvesController < ApplicationController
   # GET /shelves/new
   # GET /shelves/new.json
   def new
-    @shelf = Shelf.new
+    @shelf = Shelf.new(:store_id => params[:store_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,10 +42,12 @@ class ShelvesController < ApplicationController
   # POST /shelves.json
   def create
     @shelf = Shelf.new(params[:shelf])
+    @shelf.store_id = current_user.store_id
+    @shelf.save
 
     respond_to do |format|
       if @shelf.save
-        format.html { redirect_to @shelf, notice: 'Shelf was successfully created.' }
+        format.html { redirect_to store_shelves_path, notice: 'Shelf was successfully created.' }
         format.json { render json: @shelf, status: :created, location: @shelf }
       else
         format.html { render action: "new" }
@@ -60,7 +63,7 @@ class ShelvesController < ApplicationController
 
     respond_to do |format|
       if @shelf.update_attributes(params[:shelf])
-        format.html { redirect_to @shelf, notice: 'Shelf was successfully updated.' }
+        format.html { redirect_to store_shelves_path, notice: 'Shelf was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,4 +83,9 @@ class ShelvesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def store_identify
+      @storeid = current_user.store_id
+    end
 end

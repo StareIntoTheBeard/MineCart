@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  before_filter :storeinfo, :only => :show
   # GET /stores
   # GET /stores.json
   def index
@@ -13,7 +14,7 @@ class StoresController < ApplicationController
   # GET /stores/1
   # GET /stores/1.json
   def show
-    @store = Store.find(params[:id])
+
     @product_core = @store.product_cores.build
 
     respond_to do |format|
@@ -42,6 +43,10 @@ class StoresController < ApplicationController
   # POST /stores.json
   def create
     @store = Store.new(params[:store])
+    @store.save
+    current_user.store_id = @store.id
+    current_user.save
+
 
     respond_to do |format|
       if @store.save
@@ -81,4 +86,11 @@ class StoresController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def storeinfo
+      @store = Store.find(params[:id])
+      @productlist = ProductCore.find_all_by_store_id(@store)
+      @shelflist = Shelf.find_all_by_store_id(@store)
+    end
 end
