@@ -1,5 +1,5 @@
-== RailCart (working title)
+== MineCart (working title)
 
 WUP's (open-source/gem-based?) RoR shopping cart software. It uses Stripe for payment processing and customer management. It also allows for multiple storefronts called shelves (which can have configurable business rules per shelf) and master product records (which can be instantiated into independently editable items).
 
-For more on this and insight on what's currently being developed on RailCart, check out the Collaborator repo here: http://collaborator.winduppixel.com/projects/24
+For more on this and insight on what's currently being developed on MineCart, check out the Collaborator repo here: http://collaborator.winduppixel.com/projects/24
