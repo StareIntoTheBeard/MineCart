@@ -13,13 +13,13 @@
   <tr>
     <td><%= category.title %></td>
     <td><%= category.description %></td>
-    <td><%= link_to 'Show', store_shelf_category_path(@shelf.store,@shelf,category) %></td>
-    <td><%= link_to 'Edit', edit_store_shelf_category_path(@shelf.store,@shelf,category) %></td>
-    <td><%= link_to 'Destroy', store_shelf_category_path(@shelf.store, @shelf, category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', shelf_category_path(@shelf,category) %></td>
+    <td><%= link_to 'Edit', edit_shelf_category_path(@shelf,category) %></td>
+    <td><%= link_to 'Destroy', shelf_category_path(@shelf, category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Category', new_store_shelf_category_path %>
+<%= link_to 'New Category', new_shelf_category_path %>

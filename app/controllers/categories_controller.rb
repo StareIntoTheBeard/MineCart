@@ -46,8 +46,8 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to store_shelf_categories_path, notice: 'Category was successfully created.' }
-        format.json { render json: store_shelf_categories_path, status: :created, location: @category }
+        format.html { redirect_to shelf_categories_path, notice: 'Category was successfully created.' }
+        format.json { render json: shelf_categories_path, status: :created, location: @category }
       else
         format.html { render action: "new" }
         format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -62,7 +62,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        format.html { redirect_to store_shelf_categories_path, notice: 'Category was successfully updated.' }
+        format.html { redirect_to shelf_categories_path, notice: 'Category was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -78,7 +78,7 @@ class CategoriesController < ApplicationController
     @category.destroy
 
     respond_to do |format|
-      format.html { redirect_to store_shelf_categories_path(@shelf.store,@shelf) }
+      format.html { redirect_to shelf_categories_path(@shelf.store,@shelf) }
       format.json { head :no_content }
     end
   end

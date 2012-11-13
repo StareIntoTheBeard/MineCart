@@ -79,7 +79,7 @@ class ShelvesController < ApplicationController
     @shelf.destroy
 
     respond_to do |format|
-      format.html { redirect_to shelves_url }
+      format.html { redirect_to store_shelves_url }
       format.json { head :no_content }
     end
   end

@@ -5,29 +5,29 @@ Shoppingcart::Application.routes.draw do
 
   devise_for :users
 
-  resources :stores do
+  # resources :stores do
+  #   resources :product_cores
+  #   resources :shelves do
+  #     resources :categories do
+  #       resources :product_instances
+  #     end
+  #     resources :shelf_pages
+  #   end
+  # end
+
+  resources :stores do 
     resources :product_cores
-    resources :shelves do
-      resources :categories do
-        resources :product_instances
-      end
-      resources :shelf_pages
-    end
+    resources :shelves
   end
 
-  # resources :stores do 
-  #   resources :product_cores
-  #   resources :shelves
-  # end
+  resources :shelves do 
+    resources :categories
+    resources :shelf_pages
+  end
 
-  # resources :shelves do 
-  #   resources :categories
-  #   resources :shelf_pages
-  # end
-
-  # resources :categories do 
-  #   resources :product_instances 
-  # end
+  resources :categories do 
+    resources :product_instances 
+  end
 
   root :to => 'homes#index'
 
