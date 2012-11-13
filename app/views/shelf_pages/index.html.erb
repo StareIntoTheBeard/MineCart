@@ -15,13 +15,13 @@
     <td><%= shelf_page.title %></td>
     <td><%= shelf_page.content %></td>
     <td><%= shelf_page.tags %></td>
-    <td><%= link_to 'Show', shelf_page %></td>
-    <td><%= link_to 'Edit', edit_shelf_page_path(shelf_page) %></td>
-    <td><%= link_to 'Destroy', shelf_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', shelf_shelf_page_path(@shelf, shelf_page) %></td>
+    <td><%= link_to 'Edit', edit_shelf_shelf_page_path(@shelf, shelf_page) %></td>
+    <td><%= link_to 'Destroy', shelf_shelf_page_path(@shelf, shelf_page), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Shelf page', new_shelf_page_path %>
+<%= link_to 'New Shelf page', new_shelf_shelf_page_path %>

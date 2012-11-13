@@ -11,5 +11,6 @@
 </p>
 
 
-<%= link_to 'Edit', edit_store_shelf_category_path(@category) %> |
-<%= link_to 'Back', store_shelf_category_path %>
+<%= link_to 'Edit', edit_shelf_category_path(@category) %> |
+<%= link_to 'Back', shelf_category_path %>
+<%= link_to 'Add products', store_product_cores_path(current_user.store_id) %>

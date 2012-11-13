@@ -17,13 +17,13 @@
     <td><%= product_instance.image %></td>
     <td><%= product_instance.active %></td>
     <td><%= product_instance.price %></td>
-    <td><%= link_to 'Show', product_instance %></td>
-    <td><%= link_to 'Edit', edit_product_instance_path(product_instance) %></td>
-    <td><%= link_to 'Destroy', product_instance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', category_product_instance_path(@category, product_instance) %></td>
+    <td><%= link_to 'Edit', edit_category_product_instance_path(@category, product_instance) %></td>
+    <td><%= link_to 'Destroy', category_product_instance_path(@category, product_instance), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Product instance', new_product_instance_path %>
+<%= link_to 'New Product instance', new_category_product_instance_path %>

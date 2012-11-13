@@ -1,4 +1,4 @@
-<%= form_for(@shelf_page) do |f| %>
+<%= form_for([@shelf, @shelf_page]) do |f| %>
   <% if @shelf_page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@shelf_page.errors.count, "error") %> prohibited this shelf_page from being saved:</h2>
