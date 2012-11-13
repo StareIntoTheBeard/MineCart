@@ -1,5 +1,5 @@
 class ProductCoresController < ApplicationController
-  before_filter :store_identify
+  before_filter :orientation
   # GET /product_cores
   # GET /product_cores.json
   def index
@@ -59,7 +59,7 @@ class ProductCoresController < ApplicationController
   # PUT /product_cores/1.json
   def update
     # @product_core = ProductCore.find(params[:id])
-    @product_core = @store.product_cores(params[:id])
+    @product_core = @store.product_cores.find(params[:id])
 
     respond_to do |format|
       if @product_core.update_attributes(params[:product_core])
@@ -86,7 +86,7 @@ class ProductCoresController < ApplicationController
   end
 
     private
-    def store_identify
+    def orientation
       @store = Store.find(params[:store_id])
       @storeid = current_user.store_id
     end

@@ -1,5 +1,5 @@
 class StoresController < ApplicationController
-  before_filter :storeinfo, :only => :show
+  before_filter :orientation, :only => :show
   # GET /stores
   # GET /stores.json
   def index
@@ -88,7 +88,7 @@ class StoresController < ApplicationController
   end
 
   private
-    def storeinfo
+    def orientation
       @store = Store.find(params[:id])
       @productlist = ProductCore.find_all_by_store_id(@store)
       @shelflist = Shelf.find_all_by_store_id(@store)

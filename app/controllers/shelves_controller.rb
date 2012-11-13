@@ -1,9 +1,9 @@
 class ShelvesController < ApplicationController
-  before_filter :store_identify
+  before_filter :orientation
   # GET /shelves
   # GET /shelves.json
   def index
-    @shelves = Shelf.all
+    @shelves = @store.shelves.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class ShelvesController < ApplicationController
   # GET /shelves/1
   # GET /shelves/1.json
   def show
-    @shelf = Shelf.find(params[:id])
+    @shelf = @store.shelves.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +25,7 @@ class ShelvesController < ApplicationController
   # GET /shelves/new
   # GET /shelves/new.json
   def new
-    @shelf = Shelf.new(:store_id => params[:store_id])
+    @shelf = @store.shelves.new(:store_id => params[:store_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,13 +35,13 @@ class ShelvesController < ApplicationController
 
   # GET /shelves/1/edit
   def edit
-    @shelf = Shelf.find(params[:id])
+    @shelf = @store.shelves.find(params[:id])
   end
 
   # POST /shelves
   # POST /shelves.json
   def create
-    @shelf = Shelf.new(params[:shelf])
+    @shelf = @store.shelves.new(params[:shelf])
     @shelf.store_id = current_user.store_id
     @shelf.save
 
@@ -59,7 +59,7 @@ class ShelvesController < ApplicationController
   # PUT /shelves/1
   # PUT /shelves/1.json
   def update
-    @shelf = Shelf.find(params[:id])
+    @shelf = @store.shelves.find(params[:id])
 
     respond_to do |format|
       if @shelf.update_attributes(params[:shelf])
@@ -75,7 +75,7 @@ class ShelvesController < ApplicationController
   # DELETE /shelves/1
   # DELETE /shelves/1.json
   def destroy
-    @shelf = Shelf.find(params[:id])
+    @shelf = @store.shelves.find(params[:id])
     @shelf.destroy
 
     respond_to do |format|
@@ -85,7 +85,8 @@ class ShelvesController < ApplicationController
   end
 
   private
-    def store_identify
+    def orientation
+      @store = Store.find(params[:store_id])
       @storeid = current_user.store_id
     end
 end

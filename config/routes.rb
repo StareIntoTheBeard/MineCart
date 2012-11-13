@@ -15,6 +15,20 @@ Shoppingcart::Application.routes.draw do
     end
   end
 
+  # resources :stores do 
+  #   resources :product_cores
+  #   resources :shelves
+  # end
+
+  # resources :shelves do 
+  #   resources :categories
+  #   resources :shelf_pages
+  # end
+
+  # resources :categories do 
+  #   resources :product_instances 
+  # end
+
   root :to => 'homes#index'
 
 
