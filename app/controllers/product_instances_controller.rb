@@ -4,7 +4,6 @@ class ProductInstancesController < ApplicationController
   before_filter :orientation
   def index
     @product_instances = @category.product_instances.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @product_instances }
@@ -15,6 +14,7 @@ class ProductInstancesController < ApplicationController
   # GET /product_instances/1.json
   def show
     @product_instance = @category.product_instances.find(params[:id])
+    @coreinfo = ProductCore.find_by_sku(@product_instance.sku)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +25,10 @@ class ProductInstancesController < ApplicationController
   # GET /product_instances/new
   # GET /product_instances/new.json
   def new
-    @product_instance = @category.product_instances.new(:category_id => params[:category_id])
+    
+    @product_instance = @category.product_instances.new(:category_id => params[:category_id], :sku => params[:sku])
+    @coreinfo = ProductCore.find_by_sku(params[:sku])
+    @form = @coreinfo
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +39,9 @@ class ProductInstancesController < ApplicationController
   # GET /product_instances/1/edit
   def edit
     @product_instance = @category.product_instances.find(params[:id])
+    @coreinfo = ProductCore.find_by_sku(@product_instance.sku)
+    @form = @product_instance 
+
   end
 
   # POST /product_instances
@@ -57,7 +63,7 @@ class ProductInstancesController < ApplicationController
   # PUT /product_instances/1
   # PUT /product_instances/1.json
   def update
-    @product_instance = ProductInstance.find(params[:id])
+    @product_instance = @category.product_instances.find(params[:id])
 
     respond_to do |format|
       if @product_instance.update_attributes(params[:product_instance])
@@ -73,7 +79,7 @@ class ProductInstancesController < ApplicationController
   # DELETE /product_instances/1
   # DELETE /product_instances/1.json
   def destroy
-    @product_instance = ProductInstance.find(params[:id])
+    @product_instance = @category.product_instances.find(params[:id])
     @product_instance.destroy
 
     respond_to do |format|

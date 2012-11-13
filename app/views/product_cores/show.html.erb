@@ -31,5 +31,18 @@
 </p>
 
 
-<%= link_to 'Edit', edit_store_product_core_path(@storeid, @product_core) %> |
+<%= link_to 'Edit', edit_store_product_core_path(@store, @product_core) %> |
 <%= link_to 'Back', store_product_cores_path %>
+<br><br>
+This has been created in the following instances:<br>
+<% @allinstances.each do |i| %>
+  <%= link_to i.category.shelf.name, store_shelf_path(current_user.store_id, i.category.shelf) %>
+  <%= link_to i.category.title, shelf_category_path(i.category.shelf, i.category) %>
+  <%= link_to "Edit Instance", edit_category_product_instance_path(i.category, i.id) %>
+  <br>
+<% end%>
+
+<br>
+<% @categories.each do |c|%>
+  <%= link_to "Add to " << c.title, new_category_product_instance_path(c.id, @product_core.sku) %>
+<% end %>

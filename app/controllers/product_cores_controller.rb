@@ -4,6 +4,7 @@ class ProductCoresController < ApplicationController
   # GET /product_cores.json
   def index
     @product_cores = @store.product_cores.all
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @product_cores }
@@ -14,7 +15,8 @@ class ProductCoresController < ApplicationController
   # GET /product_cores/1.json
   def show
     @product_core = @store.product_cores.find(params[:id])
-
+    @categories = Category.all
+    @allinstances = ProductInstance.find_all_by_sku(@product_core.sku)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product_core }
@@ -76,11 +78,11 @@ class ProductCoresController < ApplicationController
   # DELETE /product_cores/1.json
   def destroy
     # @product_core = ProductCore.find(params[:id])
-    @product_core = @store.product_cores(params[:id])
+    @product_core = @store.product_cores.find(params[:id])
     @product_core.destroy
 
     respond_to do |format|
-      format.html { redirect_to product_cores_url }
+      format.html { redirect_to store_product_cores_url }
       format.json { head :no_content }
     end
   end
@@ -88,6 +90,5 @@ class ProductCoresController < ApplicationController
     private
     def orientation
       @store = Store.find(params[:store_id])
-      @storeid = current_user.store_id
     end
 end

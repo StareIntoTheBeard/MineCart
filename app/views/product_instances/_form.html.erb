@@ -12,12 +12,23 @@
   <% end %>
 
   <div class="field">
+    Product Title:<br>
+    <%= @coreinfo.name %>
+  </div>
+
+  <div class="field">
+    Product SKU:<br>
+    <%= @coreinfo.sku %>
+    <%= f.hidden_field :sku, :value => @form.sku %>
+  </div>
+
+  <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :value => @form.description %>
   </div>
   <div class="field">
     <%= f.label :image %><br />
-    <%= f.text_field :image %>
+    <%= f.text_field :image, :value => @form.image %>
   </div>
   <div class="field">
     <%= f.label :active %><br />
@@ -25,7 +36,7 @@
   </div>
   <div class="field">
     <%= f.label :price %><br />
-    <%= f.number_field :price %>
+    <%= f.number_field :price, :value => @form.price %>
   </div>
   <div class="actions">
     <%= f.submit %>

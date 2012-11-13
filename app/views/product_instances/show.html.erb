@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Title:</b>
+  <%= @coreinfo.name %>
+</p>
+
+<p>
+  <b>SKU: </b>
+  <%= link_to @product_instance.sku, store_product_core_path(current_user.store_id, @coreinfo) %>
+</p>
+
+<p>
   <b>Description:</b>
   <%= @product_instance.description %>
 </p>
@@ -21,5 +31,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_product_instance_path(@product_instance) %> |
-<%= link_to 'Back', product_instances_path %>
+<%= link_to 'Edit', edit_category_product_instance_path(@category, @product_instance) %> |
+<%= link_to 'Back', category_product_instances_path %>

@@ -29,6 +29,10 @@ Shoppingcart::Application.routes.draw do
     resources :product_instances 
   end
 
+  # match 'stores/:store_id/product_cores/:id/edit' => 'Product_Cores#edit', :as => 'edit_store_product_core'
+
+  match 'categories/:category_id/product_instances/new/:sku' => 'Product_Instances#new', :as =>'new_category_product_instance'
+
   root :to => 'homes#index'
 
 

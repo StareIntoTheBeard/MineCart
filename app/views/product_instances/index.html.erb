@@ -2,6 +2,8 @@
 
 <table>
   <tr>
+    <th>Title</th>
+    <th>SKU</th>
     <th>Description</th>
     <th>Image</th>
     <th>Active</th>
@@ -13,6 +15,8 @@
 
 <% @product_instances.each do |product_instance| %>
   <tr>
+    <td><%= ProductCore.find_by_sku(product_instance.sku).name %></td>
+    <td><%= product_instance.sku %></td>
     <td><%= product_instance.description %></td>
     <td><%= product_instance.image %></td>
     <td><%= product_instance.active %></td>
@@ -26,4 +30,4 @@
 
 <br />
 
-<%= link_to 'New Product instance', new_category_product_instance_path %>
+<%# link_to 'New Product instance', new_category_product_instance_path(@category, @coreinfo) %>

@@ -14,20 +14,18 @@
 
 <% @product_cores.each do |product_core| %>
   <tr>
-    <td><%= product_core.name %></td>
+    <td><%= link_to product_core.name, store_product_core_path(@store, product_core) %></td>
     <td><%= product_core.description %></td>
     <td><%= product_core.active %></td>
     <td><%= product_core.price %></td>
     <td><%= product_core.sku %></td>
     <td><%= product_core.image %></td>
-    <td><%= link_to 'Show', store_product_core_path(@storeid, product_core) %></td>
-    <td><%= link_to 'New', new_store_product_core_path %>
-    <td><%# link_to 'Edit', edit_product_core_path(product_core) %></td>
-    <td><%# link_to 'Destroy', product_core, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', edit_store_product_core_path(@store, product_core) %></td>
+    <td><%= link_to 'Destroy', store_product_core_path(@store, product_core), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<br />    
+<%= link_to 'New Product Core', new_store_product_core_path %>
 
-<%# link_to 'New Product core', new_product_core_path %>
