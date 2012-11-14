@@ -87,6 +87,5 @@ class ShelvesController < ApplicationController
   private
     def orientation
       @store = Store.find(params[:store_id])
-      @storeid = current_user.store_id
     end
 end

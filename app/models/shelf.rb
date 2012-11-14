@@ -5,4 +5,5 @@ class Shelf < ActiveRecord::Base
   parent_resource :store
   has_many :shelf_pages
   has_many :categories
+
 end
