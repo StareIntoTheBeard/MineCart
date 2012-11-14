@@ -32,13 +32,13 @@ ActiveRecord::Schema.define(:version => 20121114012538) do
     t.string   "name"
     t.text     "description"
     t.boolean  "active"
-    t.integer  "price"
+    t.decimal  "price",       :precision => 8, :scale => 2
     t.string   "sku"
     t.string   "image"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
     t.integer  "store_id"
-    t.boolean  "applytoall",  :default => false
+    t.boolean  "applytoall",                                :default => false
   end
 
   add_index "product_cores", ["sku"], :name => "index_product_cores_on_sku", :unique => true
@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(:version => 20121114012538) do
     t.text     "description"
     t.string   "image"
     t.boolean  "active"
-    t.integer  "price"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.decimal  "price",           :precision => 8, :scale => 2
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
     t.integer  "product_core_id"
     t.integer  "category_id"
     t.string   "sku"
@@ -67,10 +67,10 @@ ActiveRecord::Schema.define(:version => 20121114012538) do
   create_table "shelves", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "currency"
-    t.string   "language"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "currency",    :default => "USD"
+    t.string   "language",    :default => "English"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "store_id"
   end
 

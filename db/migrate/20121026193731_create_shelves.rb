@@ -3,8 +3,8 @@ class CreateShelves < ActiveRecord::Migration
     create_table :shelves do |t|
       t.string :name
       t.text :description
-      t.string :currency
-      t.string :language
+      t.string :currency, :default => 'USD'
+      t.string :language, :default => 'English'
 
       t.timestamps
     end

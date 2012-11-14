@@ -4,7 +4,7 @@ class CreateProductCores < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.boolean :active
-      t.integer :price
+      t.decimal :price, :precision => 8, :scale => 2
       t.string :sku
       t.string :image
 
