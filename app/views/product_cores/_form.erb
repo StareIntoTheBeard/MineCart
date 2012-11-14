@@ -36,6 +36,13 @@
     <%= f.text_field :image %>
   </div>
 
+
+  <% unless current_page?(action: 'new') %>
+    <div class="field">
+      <%= f.label :applytoall, "Apply changes to all instances?" %>
+      <%= f.check_box :applytoall, :checked => false %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

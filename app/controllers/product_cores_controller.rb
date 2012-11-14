@@ -1,5 +1,6 @@
 class ProductCoresController < ApplicationController
   before_filter :orientation
+  after_filter :proliferate, :only => :update
   # GET /product_cores
   # GET /product_cores.json
   def index
@@ -43,7 +44,6 @@ class ProductCoresController < ApplicationController
   # POST /product_cores
   # POST /product_cores.json
   def create
-    # @product_core = ProductCore.new(params[:product_core])
     @product_core = @store.product_cores.new(params[:product_core])
 
     respond_to do |format|
@@ -60,7 +60,6 @@ class ProductCoresController < ApplicationController
   # PUT /product_cores/1
   # PUT /product_cores/1.json
   def update
-    # @product_core = ProductCore.find(params[:id])
     @product_core = @store.product_cores.find(params[:id])
 
     respond_to do |format|
@@ -77,7 +76,6 @@ class ProductCoresController < ApplicationController
   # DELETE /product_cores/1
   # DELETE /product_cores/1.json
   def destroy
-    # @product_core = ProductCore.find(params[:id])
     @product_core = @store.product_cores.find(params[:id])
     @product_core.destroy
 
@@ -90,5 +88,15 @@ class ProductCoresController < ApplicationController
     private
     def orientation
       @store = Store.find(params[:store_id])
+    end
+
+    def proliferate
+      @allinstances = ProductInstance.find_all_by_sku(@product_core.sku)
+      if @product_core.applytoall == true
+        @allinstances.each do |i|
+          i.update_attribute(:description,  params[:product_core][:description])
+          i.save
+        end
+      end
     end
 end

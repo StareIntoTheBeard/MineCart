@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113203208) do
+ActiveRecord::Schema.define(:version => 20121114012538) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -35,9 +35,10 @@ ActiveRecord::Schema.define(:version => 20121113203208) do
     t.integer  "price"
     t.string   "sku"
     t.string   "image"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "store_id"
+    t.boolean  "applytoall",  :default => false
   end
 
   add_index "product_cores", ["sku"], :name => "index_product_cores_on_sku", :unique => true
