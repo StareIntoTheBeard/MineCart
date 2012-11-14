@@ -7,7 +7,7 @@
 
 <p>
   <b>SKU: </b>
-  <%= link_to @product_instance.sku, store_product_core_path(currentstore, @coreinfo) %>
+  <%= @product_instance.sku %>
 </p>
 
 <p>
@@ -30,6 +30,10 @@
   <%= @product_instance.price %>
 </p>
 
+<%= link_to "buy", "#" %>
 
-<%= link_to 'Edit', edit_category_product_instance_path(@category, @product_instance) %> |
-<%= link_to 'Back', category_product_instances_path %>
+<% content_for :admin_links do %>
+	<%= link_to 'Edit', edit_category_product_instance_path(@category, @product_instance) %> |
+	<%= link_to 'Back', category_product_instances_path %> | 
+	<%= link_to "Master Sku", store_product_core_path(currentstore, @coreinfo) %>	
+<% end %>
