@@ -106,9 +106,6 @@ class ProductCoresController < ApplicationController
           if i.price != params[:product_core][:price]
             i.update_attribute(:price, params[:product_core][:price])
           end
-          if i.sku != params[:product_core][:sku]
-            i.update_attribute(:sku, params[:product_core][:sku])
-          end
           i.save
         end
       end

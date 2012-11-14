@@ -11,6 +11,18 @@
     </div>
   <% end %>
 
+  <% unless current_page?(action: 'new') %>
+    <div class=="field">
+      <%= f.label :sku %><br />
+      <%= @product_core.sku %>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= f.label :sku %><br />
+      <%= f.text_field :sku %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -27,15 +39,11 @@
     <%= f.label :price %><br />
     <%= f.number_field :price %>
   </div>
-  <div class="field">
-    <%= f.label :sku %><br />
-    <%= f.text_field :sku %>
-  </div>
+
   <div class="field">
     <%= f.label :image %><br />
     <%= f.text_field :image %>
   </div>
-
 
   <% unless current_page?(action: 'new') %>
     <div class="field">
