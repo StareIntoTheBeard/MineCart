@@ -11,17 +11,18 @@
     </div>
   <% end %>
 
-  <% unless current_page?(action: 'new') %>
-    <div class=="field">
-      <%= f.label :sku %><br />
-      <%= @product_core.sku %>
-    </div>
-  <% else %>
+  <% if params[:action] == "new" or @product_core.errors.count > 0  %>
     <div class="field">
       <%= f.label :sku %><br />
       <%= f.text_field :sku %>
+    </div>  
+  <% else %>
+  <div class=="field">
+      <%= f.label :sku %><br />
+      <%= @product_core.sku %>
     </div>
   <% end %>
+
 
   <div class="field">
     <%= f.label :name %><br />
