@@ -8,9 +8,7 @@ module ApplicationHelper
 			return current_user.store_id
 		else
 			1
-			# @hey = params[:controller].camelcase.singularize.constantize
-			# # @burger = @hey.find_by_id(params[:id])
-			# @parentid = parent_resource(@hey)
+
 			end
 	end
 end

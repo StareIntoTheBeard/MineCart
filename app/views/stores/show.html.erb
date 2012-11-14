@@ -4,7 +4,6 @@
   <b>Name:</b>
   <%= @store.name %>
 </p>
-
 <p>
   <b>Description:</b>
   <%= @store.description %>
@@ -22,10 +21,11 @@ Shelves<br>
 	<% end %>
 
 <br>
-
+<%= content_for :admin_links do %>
 <%= link_to "Create some products", '/stores/' + @store.id.to_s + '/product_cores/new' %>
 
 <%= link_to "New Shelf", '/stores/' + @store.id.to_s + '/shelves/new' %>
 
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>
+<% end %>

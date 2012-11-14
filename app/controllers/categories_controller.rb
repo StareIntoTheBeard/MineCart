@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   before_filter :orientation
+  load_and_authorize_resource
 
   def index
     @categories = @shelf.categories.all
