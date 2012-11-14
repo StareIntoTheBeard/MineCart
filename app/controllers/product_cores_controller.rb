@@ -1,5 +1,6 @@
 class ProductCoresController < ApplicationController
   before_filter :orientation
+  before_filter :dipswitch, :only => [:new, :edit, :update, :create]
   after_filter :proliferate, :only => :update
   # GET /product_cores
   # GET /product_cores.json
@@ -88,6 +89,13 @@ class ProductCoresController < ApplicationController
     private
     def orientation
       @store = Store.find(params[:store_id])
+    end
+
+    def dipswitch
+      @switch = false
+      if params[:action] == "edit" or params[:action] == "update"
+        @switch = true
+      end
     end
 
     def proliferate
