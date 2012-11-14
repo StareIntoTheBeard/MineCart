@@ -94,7 +94,21 @@ class ProductCoresController < ApplicationController
       @allinstances = ProductInstance.find_all_by_sku(@product_core.sku)
       if @product_core.applytoall == true
         @allinstances.each do |i|
-          i.update_attribute(:description,  params[:product_core][:description])
+          if i.description != params[:product_core][:description]
+            i.update_attribute(:description,  params[:product_core][:description])
+          end
+          if i.image != params[:product_core][:image]
+            i.update_attribute(:image, params[:product_core][:image])
+          end
+          if i.active != params[:product_core][:active]
+            i.update_attribute(:active, params[:product_core][:active])
+          end
+          if i.price != params[:product_core][:price]
+            i.update_attribute(:price, params[:product_core][:price])
+          end
+          if i.sku != params[:product_core][:sku]
+            i.update_attribute(:sku, params[:product_core][:sku])
+          end
           i.save
         end
       end
