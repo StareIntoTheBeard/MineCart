@@ -19,6 +19,7 @@ gem 'stripe'
 gem 'twitter-bootstrap-rails'
 gem 'bluecloth'
 gem 'rails_autolink'
+gem 'i18n'
 
 # Gems used only for assets and not required
 # in production environments by default.

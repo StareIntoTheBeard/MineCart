@@ -8,7 +8,6 @@ module ApplicationHelper
 			return current_user.store_id
 		else
 			1
-
-			end
+		end
 	end
 end
