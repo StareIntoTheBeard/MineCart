@@ -29,5 +29,6 @@
 </table>
 
 <br />
-
-<%# link_to 'New Product instance', new_category_product_instance_path(@category, @coreinfo) %>
+<% content_for :admin_links do %>
+  <%#  link_to 'New Product instance', new_category_product_instance_path(@category, @coreinfo) %>
+<% end %>

@@ -27,5 +27,6 @@
 </table>
 
 <br />    
-<%= link_to 'New Product Core', new_store_product_core_path %>
-
+<% content_for :admin_links do %>
+    <%= link_to 'New Product Core', new_store_product_core_path %>
+<% end %>

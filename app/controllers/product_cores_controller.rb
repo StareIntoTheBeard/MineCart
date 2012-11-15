@@ -2,6 +2,7 @@ class ProductCoresController < ApplicationController
   before_filter :orientation
   before_filter :dipswitch, :only => [:new, :edit, :update, :create]
   after_filter :proliferate, :only => :update
+  load_and_authorize_resource
   # GET /product_cores
   # GET /product_cores.json
   def index

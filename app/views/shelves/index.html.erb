@@ -18,12 +18,15 @@
     <td><%= shelf.currency %></td>
     <td><%= shelf.language %></td>
     <td><%= link_to 'Show', store_shelf_path(@store, shelf) %></td>
-    <td><%= link_to 'Edit', edit_store_shelf_path(@store, shelf) %></td>
-    <td><%= link_to 'Destroy', store_shelf_path(@store, shelf), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if @adminswitch %>
+      <td><%= link_to 'Edit', edit_store_shelf_path(@store, shelf) %></td>
+      <td><%= link_to 'Destroy', store_shelf_path(@store, shelf), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%# link_to 'New Shelf', new_store_shelf_path %>
+<% content_for :admin_links do %>
+  <%= link_to 'New Shelf', new_store_shelf_path %>
+<% end %>

@@ -7,7 +7,7 @@
 
 <p>
   <b>Content:</b>
-  <%= @shelf_page.content %>
+  <%= make_me_a_pretty_sald(@shelf_page.content) %>
 </p>
 
 <p>
@@ -15,6 +15,7 @@
   <%= @shelf_page.tags %>
 </p>
 
-
-<%= link_to 'Edit', edit_shelf_shelf_page_path(@shelf_page) %> |
-<%= link_to 'Back', shelf_shelf_pages_path %>
+<% content_for :admin_links do %>
+	<%= link_to 'Edit', edit_shelf_shelf_page_path(@shelf_page) %> |
+	<%= link_to 'Back', shelf_shelf_pages_path %>
+<% end %>

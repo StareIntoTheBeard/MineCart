@@ -1,5 +1,6 @@
 class StoresController < ApplicationController
   before_filter :orientation, :only => :show
+  load_and_authorize_resource
   # GET /stores
   # GET /stores.json
   def index
@@ -44,8 +45,8 @@ class StoresController < ApplicationController
   def create
     @store = Store.new(params[:store])
     @store.save
-    current_user.store_id = @store.id
-    current_user.save
+    # current_user.store_id = @store.id
+    # current_user.save
 
 
     respond_to do |format|

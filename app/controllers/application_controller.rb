@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 	def adminswitch
 		if user_signed_in? and current_user.role? :admin 
 			@adminswitch = true
+		else
+			@adminswitch = false
 		end
 	end
 end

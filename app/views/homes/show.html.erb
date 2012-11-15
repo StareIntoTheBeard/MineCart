@@ -10,6 +10,7 @@
   <%= @home.body %>
 </p>
 
-
-<%= link_to 'Edit', edit_home_path(@home) %> |
-<%= link_to 'Back', homes_path %>
+<% content_for :admin_links do %>
+	<%= link_to 'Edit', edit_home_path(@home) %> |
+	<%= link_to 'Back', homes_path %>
+<% end %>

@@ -7,7 +7,7 @@
 
 <p>
   <b>Description:</b>
-  <%= @shelf.description %>
+  <%= make_me_a_pretty_sald(@shelf.description) %>
 </p>
 
 <p>
@@ -24,14 +24,18 @@
   <b>Categories:</b><br>
   <% @shelf.categories.each do |c| %>
   	<%= link_to c.title, shelf_category_path(@shelf, c) %>
-  	<%= link_to "Edit Category", edit_shelf_category_path(@shelf, c) %><br>
+  	<% if @adminswitch %>
+  		<%= link_to "Edit Category", edit_shelf_category_path(@shelf, c) %><br>
+  	<% end %>
   <% end %>
 </p>
 
 
 
+<% content_for :admin_links do %>
+	<%= link_to 'Edit', edit_store_shelf_path(@shelf) %> |
+	<%= link_to 'Back', store_shelves_path %> | 
+	<%= link_to 'Create Content Pages', new_shelf_shelf_page_path(@shelf) %>
 
-<%= link_to 'Edit', edit_store_shelf_path(@shelf) %> |
-<%= link_to 'Back', store_shelves_path %>
-
-<%= link_to 'New Category', new_shelf_category_path(@shelf) %>
+	<%= link_to 'New Category', new_shelf_category_path(@shelf) %>
+<% end %>

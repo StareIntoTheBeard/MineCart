@@ -23,5 +23,6 @@
 </table>
 
 <br />
-
-<%= link_to 'New Shelf page', new_shelf_shelf_page_path %>
+<% content_for :admin_links do %>
+  <%= link_to 'New Shelf page', new_shelf_shelf_page_path %>
+<% end %>
