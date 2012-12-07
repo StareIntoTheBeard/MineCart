@@ -1,5 +1,9 @@
 == MineCart (working title)
 
-WUP's (open-source/gem-based?) RoR shopping cart software. It uses Stripe for payment processing and customer management. It also allows for multiple storefronts called shelves (which can have configurable business rules per shelf) and master product records (which can be instantiated into independently editable items).
+MineCart is a shopping cart bootstrap for quick implementation of eCommerce sites for clients, which is still under active development. It will use Stripe for payment processing and customer management. It allows for multiple storefronts called shelves (which can have configurable business rules per shelf) and it takes an object oriented approach to product management where master product records are first created and then can be be instantiated into independently editable items. Product details at the instance level can be unique or overridden by the master product record on a case by case basis if so desired by the admin.
 
-For more on this and insight on what's currently being developed on MineCart, check out the Collaborator repo here: http://collaborator.winduppixel.com/projects/24
+To do:
+* Implement i18n
+* Implement currency conversions using Open Exchange Rates api
+* Ajax shopping cart
+* Stripe API for payment processing
