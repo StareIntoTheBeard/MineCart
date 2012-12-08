@@ -13,6 +13,7 @@ group :production do
 end 
 
 gem 'thin'
+gem 'libv8', '~> 3.11.8'
 gem 'devise'
 gem 'cancan'
 gem 'stripe'

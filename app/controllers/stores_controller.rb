@@ -45,9 +45,11 @@ class StoresController < ApplicationController
   def create
     @store = Store.new(params[:store])
     @store.save
-    # current_user.store_id = @store.id
-    # current_user.save
-
+    who_dis = current_user
+    if who_dis.store_id == nil
+      who_dis.store_id = @store.id
+      who_dis.save
+    end
 
     respond_to do |format|
       if @store.save

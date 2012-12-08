@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 homepage = Home.create([{ title: 'Home', body: 'yep'}])
+admin = Role.create(name: 'admin')
